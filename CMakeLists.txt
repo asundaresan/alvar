@@ -4,10 +4,10 @@ if(WIN32)
 else(WIN32)
     cmake_minimum_required(VERSION 2.8)
 endif(WIN32)
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/build/cmake")
+#set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/build/cmake")
 
 # define project
-project(ALVAR)
+project(alvar)
 
 # set project version
 include(version.cmake OPTIONAL)
@@ -139,7 +139,7 @@ set(OpenSceneGraph_MARK_AS_ADVANCED TRUE)
 find_package(OpenSceneGraph COMPONENTS osgViewer osgGA osgDB osgUtil osgText)
 
 if(ALVAR_PACKAGE)
-    find_package(CMU)
+    #find_package(CMU)
 
     # the PointGrey plugin is currently experimental and not included in the build by default
     set(ALVAR_USE_FLYCAPTURE2 ${ALVAR_USE_FLYCAPTURE2} CACHE BOOL "To enable PointGrey FlyCapture2 plugin")
@@ -160,15 +160,15 @@ if(ALVAR_PACKAGE)
     endif(ALVAR_USE_DSCAPTURE)
 endif(ALVAR_PACKAGE)
 
-if(NOT ALVAR_PACKAGE)
-    set(ALVAR_ROOT_DIR ${CMAKE_SOURCE_DIR})
-    find_package(ALVAR REQUIRED)
-endif(NOT ALVAR_PACKAGE)
-
-if(NOT ALVAR_PACKAGE)
-    # set install target
-    set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/../../ CACHE STRING "Directory to install files for packaging" FORCE)
-endif(NOT ALVAR_PACKAGE)
+#if(NOT ALVAR_PACKAGE)
+#    set(ALVAR_ROOT_DIR ${CMAKE_SOURCE_DIR})
+#    find_package(ALVAR REQUIRED)
+#endif(NOT ALVAR_PACKAGE)
+#
+#if(NOT ALVAR_PACKAGE)
+#    # set install target
+#    set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/../../ CACHE STRING "Directory to install files for packaging" FORCE)
+#endif(NOT ALVAR_PACKAGE)
 
 if(ALVAR_PACKAGE)
     # add debug definition on unix
@@ -267,8 +267,8 @@ add_subdirectory(sample)
 if(OPENSCENEGRAPH_FOUND)
     add_subdirectory(demo)
 endif(OPENSCENEGRAPH_FOUND)
-add_subdirectory(build)
-add_subdirectory(data)
+#add_subdirectory(build)
+#add_subdirectory(data)
 
 # hack macro to help copy runtime dependencies
 macro(copy_runtime _libraries _runtimes _prefixes)

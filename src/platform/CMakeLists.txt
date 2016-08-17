@@ -118,15 +118,11 @@ endif(NOT ${MSVC_IDE})
 # process sub directories
 add_subdirectory(capture_plugin_highgui)
 add_subdirectory(capture_plugin_file)
-if(CMU_FOUND)
+if(FALSE)
     add_subdirectory(capture_plugin_cmu)
-endif(CMU_FOUND)
-if(ALVAR_USE_FLYCAPTURE2)
     add_subdirectory(capture_plugin_ptgrey)
-endif(ALVAR_USE_FLYCAPTURE2)
-if(ALVAR_USE_DSCAPTURE)
     add_subdirectory(capture_plugin_dscapture)
-endif(ALVAR_USE_DSCAPTURE)
+endif(FALSE)
 
 # hack to setup environment runtime path
 set(ALVAR_RUNTIME ${ALVAR_RUNTIME} PARENT_SCOPE)
